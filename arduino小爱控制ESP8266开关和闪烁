@@ -1,0 +1,258 @@
+#define BLINKER_WIFI//用于连接WiFi和刷新
+#define BLINKER_MIOT_LIGHT//用于支持小爱同学识别
+#define BUTTON_1 "ButtonKey"//用于处理按键收到的数据回调函数
+#include <Blinker.h>
+
+char auth[] = "qq1290173309";//密钥
+char ssid[] = "qq1290173309";//WiFi名
+char pswd[] = "qq1290173309";//WiFi密码
+
+int GPIO = 0; //定义信号输出引脚为GPIO/0
+// 新建组件对象
+BlinkerButton Button1("btn-vk3");//APP按键指向
+// 按下BlinkerAPP按键即会执行该函数
+void button1_callback(const String & state) {
+    BLINKER_LOG("get button state: ", state);
+    if (state=="on") {
+        Button1.color("#00FF7F");//设置按键开启后显示图标的颜色
+        Button1.print("on"); // 反馈开关状态
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        
+    } else if(state=="off"){
+        Button1.print("off"); // 反馈开关状态
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        
+    }
+}
+
+
+void miotPowerState(const String & state)//小爱电源类操作的回调函数:
+{
+BLINKER_LOG("need set power state: ", state);
+
+if (state == BLINKER_CMD_ON)
+{
+BlinkerMIOT.powerState("on");//用于反馈给小爱当前状态
+BlinkerMIOT.print();
+digitalWrite(GPIO, LOW);
+digitalWrite(LED_BUILTIN, LOW); 
+
+}
+
+else if (state == BLINKER_CMD_OFF) 
+{
+BlinkerMIOT.powerState("off");//用于反馈给小爱当前状态
+BlinkerMIOT.print();
+digitalWrite(GPIO, HIGH);
+digitalWrite(LED_BUILTIN, HIGH);
+
+}
+}
+
+void miotMode(uint8_t mode)//小爱灯光类操作的回调函数:
+{
+    BLINKER_LOG("need set mode: ", mode);
+     if (mode == BLINKER_CMD_MIOT_DAY) {//日光模式
+        BlinkerMIOT.powerState("on");//用于反馈给小爱当前状态
+        BlinkerMIOT.print();
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+         digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+         digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+         digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+         digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+         digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        digitalWrite(GPIO, HIGH);
+        
+    }
+     else if (mode == BLINKER_CMD_MIOT_TV) {//电视模式
+        BlinkerMIOT.powerState("on");//用于反馈给小爱当前状态
+        BlinkerMIOT.print();
+        digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(GPIO, LOW);
+        
+    }
+    BlinkerMIOT.mode(mode);
+    BlinkerMIOT.print();
+}
+void setup() {
+// 初始化串口，并开启调试信息，调试用可以删除
+Serial.begin(115200);
+BLINKER_DEBUG.stream(Serial);
+pinMode(LED_BUILTIN, OUTPUT);//初始化LED
+digitalWrite(LED_BUILTIN, HIGH);//初始化完后设置为高电平断开灭灯
+
+// 初始化IO
+pinMode(GPIO, OUTPUT);//初始化IO引脚
+digitalWrite(GPIO, HIGH);//初始化完后设置为高电平断开 
+
+// 初始化blinker
+Blinker.begin(auth, ssid, pswd);//初始化WiFi函数
+Button1.attach(button1_callback);//按键回调函数
+BlinkerMIOT.attachPowerState(miotPowerState);//小爱电源回调函数
+BlinkerMIOT.attachMode(miotMode);//小爱灯光模式回调函数
+}
+void loop() {
+Blinker.run();
+}
